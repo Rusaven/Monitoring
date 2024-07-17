@@ -4,7 +4,7 @@ import requests
 import time
 
 def get_data():
-    response = requests.get('http://localhost:5000/data')  # Adjust URL as needed
+    response = requests.get('https://barelangmrt-monitoring.streamlit.app/')  # Adjust URL as needed
     if response.status_code == 200:
         return response.json()['data']
     else:
