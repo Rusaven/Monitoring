@@ -1,13 +1,17 @@
-# frontend.py
 import streamlit as st
 import requests
 import time
 
 def get_data():
-    response = requests.get('https://barelangmrt-monitoring.streamlit.app/')  # Adjust URL as needed
-    if response.status_code == 200:
-        return response.json()['data']
-    else:
+    try:
+        response = requests.get('https://github.com/Rusaven/Monitoring/blob/main/backend.py')  # Adjust URL to your backend endpoint
+        if response.status_code == 200:
+            return response.json()['data']
+        else:
+            st.error(f'Error: {response.status_code}')
+            return None
+    except requests.exceptions.RequestException as e:
+        st.error(f'Error: {e}')
         return None
 
 def main():
@@ -17,7 +21,7 @@ def main():
         data = get_data()
         if data:
             st.write('Received Data:', data)
-        time.sleep(1)  # Polling interval
+        time.sleep(5)  # Adjust polling interval as needed
 
 if __name__ == '__main__':
     main()
