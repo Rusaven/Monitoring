@@ -4,7 +4,7 @@ import time
 
 def get_data():
     try:
-        response = requests.get('http://localhost:5000/data')  # Adjust URL to your backend endpoint
+        response = requests.get('http://127.0.0.1:5000/data')  # Adjust URL to your backend endpoint
         if response.status_code == 200:
             return response.json()['data']
         else:
