@@ -1,8 +1,9 @@
+# app.py
 import streamlit as st
 import requests
 
 def fetch_dummy_data():
-    url = 'http://127.0.0.1:5000/get_dummy_data'  # Ganti dengan URL backend Anda
+    url = 'http://localhost:5000/get_dummy_data'  # Ganti dengan URL backend Anda
     response = requests.get(url)
     if response.status_code == 200:
         return response.json()
