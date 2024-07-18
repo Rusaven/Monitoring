@@ -1,24 +1,15 @@
-# frontend.py
-
 import streamlit as st
 import requests
 
-# Fungsi untuk mengambil data dari backend
-def fetch_data():
-    url = 'http://localhost:5000/data'  # Ganti dengan URL backend yang sesuai
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        st.error(f'Error: {response.status_code}')
+# URL backend yang diberikan oleh ngrok
+backend_url = 'http://127.0.0.1:5000/data'
 
-# Halaman utama Streamlit
-def main():
-    st.title('Monitoring Website')
+# Mendapatkan data dari backend
+response = requests.get(backend_url)
+data = response.json()
 
-    st.write('Data dari backend:')
-    data = fetch_data()
-    st.write(data)
-
-if __name__ == '__main__':
-    main()
+# Menampilkan data di frontend
+st.title('Data Monitoring')
+st.write('Sensor 1:', data['sensor1'])
+st.write('Sensor 2:', data['sensor2'])
+st.write('Sensor 3:', data['sensor3'])
